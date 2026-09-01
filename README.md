@@ -11,6 +11,10 @@ which is exactly the gap. One serve does deep context AND fast decode.
 Checkpoint on Hugging Face:
 [satgeze/GLM-5.3-Flash-EXL3-TR3-3.5bpw](https://huggingface.co/satgeze/GLM-5.3-Flash-EXL3-TR3-3.5bpw)
 
+**Benchmarks (GSM8K, HumanEval, MATH-500, deep-context decode curve) and
+the five-run KLD fidelity receipt are being measured now and will be
+published here and on the model card.**
+
 ## Quick start
 
 ```bash
