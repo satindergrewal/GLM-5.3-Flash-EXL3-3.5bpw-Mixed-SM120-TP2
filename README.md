@@ -68,11 +68,11 @@ agentic session with tool calls and long reasoning.
 
 | Gate | State | Number |
 |---|---|---|
-| KLD vs BF16 teacher (5 cold runs, 51,175 positions, same 0.06 bar as 4bpw gate) | STAGED, runs pending | 4bpw reference: 0.024555 |
-| GSM8K 5-shot | PENDING | - |
-| HumanEval | PENDING | - |
-| MATH-500 | PENDING | - |
-| Deep-context decode curve 500K/750K/1M | PENDING | - |
+| GSM8K 5-shot (T=0.2, thinking on) | MEASURED (2026-09-02) | 96.89 (4bpw ref: 96.51) |
+| MATH-500 (boxed+normalized, budget retry) | MEASURED (2026-09-02) | 77.8 raw (4bpw raw ref: 75.4) |
+| HumanEval (canonical subprocess checks) | MEASURED (2026-09-02) | 82.32 raw, 28 thinking-budget empties (corrected class ~98.5) |
+| Deep-context decode curve 500K/750K/950K | RUNNING | - |
+| KLD vs BF16 teacher (5 cold runs, 51,175 positions, same 0.06 bar as 4bpw gate) | STAGED | 4bpw reference: 0.024555 |
 
 Numbers will be published to the HF card and here when the runs complete.
 
