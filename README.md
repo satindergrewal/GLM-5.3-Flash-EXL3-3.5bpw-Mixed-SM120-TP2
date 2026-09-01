@@ -8,7 +8,8 @@ At 4bpw this combination does not fit: the drafter KV plus a 1M-token pool
 exceeds 192 GB. The mixed-rate 3.5bpw checkpoint frees 9.07 GiB per GPU,
 which is exactly the gap. One serve does deep context AND fast decode.
 
-Checkpoint on Hugging Face: satgeze/GLM-5.3-Flash-EXL3-TR3-3.5bpw
+Checkpoint on Hugging Face:
+[satgeze/GLM-5.3-Flash-EXL3-TR3-3.5bpw](https://huggingface.co/satgeze/GLM-5.3-Flash-EXL3-TR3-3.5bpw)
 
 ## Quick start
 
