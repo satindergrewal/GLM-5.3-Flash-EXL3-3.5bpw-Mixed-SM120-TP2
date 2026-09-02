@@ -55,7 +55,7 @@ Policy: if a number is not in a dated table, treat it as unverified.
 | Concurrency aggregate decode, 2/4/6 streams (batching profile, max_num_seqs=8) | 163.7 / 211.4 / 233.3 tok/s | forced gen, non-stream |
 | Per-stream decode @2/4/6 | 83 / 54 / 40 tok/s | same runs |
 | Multi-agentic: 3 tool tasks serial vs concurrent | 22.1 s vs 3.3 s (6.6x) | wall |
-| DFlash2 @230K (method=dflash, depth 7) | 133-136 tok/s single, accept 3.6-4.2; MTP3 still wins here (145 @230K) | non-stream wall |
+| DFlash2 @230K (method=dflash, depth 7, real batching) | 214-226 tok/s single warm, accept 3.6-4.2, aggregate 167.5 @6 / 168.2 @8; MTP3 @1M still wins (227.5 / 246.4) | non-stream wall |
 | Vision | qualified at 400K ctx (exact OCR + shapes/colors; full-500K rung wedges) | image tests |
 | MTP3 acceptance length | ~2.4 mean | serving |
 | KV pool | 1,985,915 tokens | serving |
