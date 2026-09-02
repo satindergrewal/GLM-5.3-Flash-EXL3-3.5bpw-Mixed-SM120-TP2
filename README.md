@@ -56,7 +56,7 @@ Policy: if a number is not in a dated table, treat it as unverified.
 | Per-stream decode @2/4/6 | 53.9 / 27.6 / 18.4 tok/s | same runs |
 | Multi-agentic: 3 tool tasks serial vs concurrent | 22.1 s vs 3.3 s (6.6x) | wall |
 | DFlash2 @230K (method=dflash, depth 7) | 133-136 tok/s single, accept 3.6-4.2; MTP3 still wins here (145 @230K) | non-stream wall |
-| Vision | qualified at FULL 500K profile (exact OCR + shapes/colors at 200K/400K/499968) | image tests |
+| Vision | qualified at 400K ctx (exact OCR + shapes/colors; full-500K rung wedges) | image tests |
 | MTP3 acceptance length | ~2.4 mean | serving |
 | KV pool | 1,985,915 tokens | serving |
 | max_model_len | 1,000,000 (1.99x concurrency) | serving |
@@ -78,12 +78,15 @@ with that flag swapped for `--limit-mm-per-prompt '{"image":4,"video":1}'`
 and one bind-mount, `patches/rotary_common.py`, which aliases the rotary
 `forward_cuda` to the eager torch implementation (this image's
 vllm_flash_attn build ships without the `layers` subpackage the ViT rope
-path imports). Qualified at the full 500K vision profile: the synthetic
-test image came back with exact shapes, colors, and verbatim OCR
-("GLM VISION TEST 42") at every rung tested: 200K, 400K, and 499968
-(pool 2,288,315 tokens at the top rung). The 1M language profile and
-the 500K vision profile are separate serve configurations; 1M + image
-is untested.
+path imports).
+
+Qualified rungs (same synthetic test image, describe + verbatim-OCR
+tests at each): **200K PASS, 400K PASS** (pool 2,412,307 tokens). The
+full 499968 profile boots and allocates its pool (2,288,315 tokens) but
+the engine wedges on the first image request at that rung (suspected
+mm-encoder memory at 0.985 gpu-utilization) - serve vision at 400K or
+lower. The 1M language profile and the vision profile are separate
+configurations; 1M + image is untested.
 
 Evidence: [docs/evidence/](docs/evidence/) - includes a real multi-turn
 agentic session with tool calls and long reasoning.
