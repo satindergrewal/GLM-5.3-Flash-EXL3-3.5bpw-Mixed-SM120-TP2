@@ -52,8 +52,8 @@ Policy: if a number is not in a dated table, treat it as unverified.
 | Decode, single stream, thinking off, forced 1024 | 126-134 tok/s | non-stream wall |
 | Decode @500K depth, forced 1024 | ~130 tok/s, no depth penalty | non-stream wall |
 | Prefill 500K / 750K / 950K | 2836.7 / 2840.6 / 2793.2 tok/s | stream TTFT |
-| Concurrency aggregate decode, 2/4/6 streams | ~108-110 tok/s flat | forced gen |
-| Per-stream decode @2/4/6 | 53.9 / 27.6 / 18.4 tok/s | same runs |
+| Concurrency aggregate decode, 2/4/6 streams (batching profile, max_num_seqs=8) | 163.7 / 211.4 / 233.3 tok/s | forced gen, non-stream |
+| Per-stream decode @2/4/6 | 83 / 54 / 40 tok/s | same runs |
 | Multi-agentic: 3 tool tasks serial vs concurrent | 22.1 s vs 3.3 s (6.6x) | wall |
 | DFlash2 @230K (method=dflash, depth 7) | 133-136 tok/s single, accept 3.6-4.2; MTP3 still wins here (145 @230K) | non-stream wall |
 | Vision | qualified at 400K ctx (exact OCR + shapes/colors; full-500K rung wedges) | image tests |
@@ -67,6 +67,15 @@ Policy: if a number is not in a dated table, treat it as unverified.
 
 Reference on the same hardware: the 4bpw DFlash2 cell peaks at 78-91 tok/s
 at 192K-230K context. This beats that decode rate at 5x the context.
+
+Concurrency correction (2026-09-02): the first concurrency rows were
+measured on a serve booted with max_num_seqs=1, so the streams were
+serialized inside the engine and the aggregate read flat (~108-110). The
+rows above are the corrected measurement on the batching profile
+(max_num_seqs=8, max_num_batched_tokens=4096, same forced-1024 protocol);
+the same bench's single stream reads 174-179 tok/s there (repetition-
+favorable text; MTP acceptance climbs on it). The single-request 1M
+qualification profile (max_num_seqs=1) remains the default launcher config.
 
 ### Vision
 
