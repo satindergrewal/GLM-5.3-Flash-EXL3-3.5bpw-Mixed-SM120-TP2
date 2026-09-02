@@ -11,9 +11,10 @@ which is exactly the gap. One serve does deep context AND fast decode.
 Checkpoint on Hugging Face:
 [satgeze/GLM-5.3-Flash-EXL3-TR3-3.5bpw](https://huggingface.co/satgeze/GLM-5.3-Flash-EXL3-TR3-3.5bpw)
 
-**Benchmarks (GSM8K, HumanEval, MATH-500, deep-context decode curve) and
-the five-run KLD fidelity receipt are being measured now and will be
-published here and on the model card.**
+**Quality gates are complete:** GSM8K 96.89, MATH-500 77.8 raw, HumanEval
+82.32 raw, a flat deep-context decode curve across 500K-950K, and the
+five-run KLD fidelity gate PASSED on 2026-09-02 at 0.029654 nats vs the
+absolute 0.06 bar. Numbers below and on the model card.
 
 ## Quick start
 
@@ -71,10 +72,10 @@ agentic session with tool calls and long reasoning.
 | GSM8K 5-shot (T=0.2, thinking on) | MEASURED (2026-09-02) | 96.89 (4bpw ref: 96.51) |
 | MATH-500 (boxed+normalized, budget retry) | MEASURED (2026-09-02) | 77.8 raw (4bpw raw ref: 75.4) |
 | HumanEval (canonical subprocess checks) | MEASURED (2026-09-02) | 82.32 raw, 28 thinking-budget empties (corrected class ~98.5) |
-| Deep-context decode curve 500K/750K/950K | RUNNING | - |
-| KLD vs BF16 teacher (5 cold runs, 51,175 positions, same 0.06 bar as 4bpw gate) | STAGED | 4bpw reference: 0.024555 |
+| Deep-context decode curve 500K/750K/950K | MEASURED (2026-09-02) | 2,982 / ~2,940 / 2,880 t/s, correct answers at every rung |
+| KLD vs BF16 teacher (5 cold runs, 51,175 positions, same 0.06 bar as 4bpw gate) | PASSED (2026-09-02) | 0.029654 mean (runs 0.02976/0.02975/0.02962/0.02969/0.02946, stddev 0.000124); 4bpw reference: 0.024555 |
 
-Numbers will be published to the HF card and here when the runs complete.
+The sealed five-run KLD receipt: [docs/evidence/five-run-kld.json](docs/evidence/five-run-kld.json).
 
 ## Why the patched image exists
 
@@ -140,8 +141,8 @@ serve ever looks slow: grep the boot log for `enforce_eager` and count
 | Derivation (encode, MTP45, pack) | complete, sealed receipts |
 | Mixed-rate vLLM serve, 1M pool, MTP3 + graphs + tools | complete, serving |
 | Real-session evidence | complete |
-| KLD five-run gate | staged; GPU window pending |
-| Eval suite (GSM8K/HumanEval/MATH-500) + deep-context curve | pending |
+| KLD five-run gate | complete, PASSED 0.029654 < 0.06 |
+| Eval suite (GSM8K/HumanEval/MATH-500) + deep-context curve | complete, numbers above |
 | Vision profile | not exercised (language profile only) |
 
 ## Repo layout
