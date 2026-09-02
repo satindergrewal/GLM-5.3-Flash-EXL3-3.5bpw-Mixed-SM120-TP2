@@ -43,24 +43,45 @@ running serve: `python3 bench/bench.py`.
 | Parallelism | TP2, DCP1, A2A | serve-k35.sh |
 | Context | 1,000,000 max, 1.99x concurrency at 1M | MAX_MODEL_LEN |
 
-## Results (2026-09-01, this exact weight set)
+## Results (2026-09-01/02, this exact weight set)
 
 Policy: if a number is not in a dated table, treat it as unverified.
 
 | Metric | Value | Verified |
 |---|---|---|
-| Decode, engine-side, MTP3, thinking on | 126-150 tok/s | serving |
-| Decode, real agentic client session (LAN, Spock) | 51-109 tok/s client-side | serving |
+| Decode, single stream, thinking off, forced 1024 | 126-134 tok/s | non-stream wall |
+| Decode @500K depth, forced 1024 | ~130 tok/s, no depth penalty | non-stream wall |
+| Prefill 500K / 750K / 950K | 2836.7 / 2840.6 / 2793.2 tok/s | stream TTFT |
+| Concurrency aggregate decode, 2/4/6 streams | ~108-110 tok/s flat | forced gen |
+| Per-stream decode @2/4/6 | 53.9 / 27.6 / 18.4 tok/s | same runs |
+| Multi-agentic: 3 tool tasks serial vs concurrent | 22.1 s vs 3.3 s (6.6x) | wall |
+| DFlash2 @230K (method=dflash, depth 7) | 133-136 tok/s single, accept 3.6-4.2; MTP3 still wins here (145 @230K) | non-stream wall |
+| Vision | qualified at 200K ctx (exact OCR + shapes/colors) | image test |
 | MTP3 acceptance length | ~2.4 mean | serving |
 | KV pool | 1,985,915 tokens | serving |
 | max_model_len | 1,000,000 (1.99x concurrency) | serving |
 | CUDA graphs | PIECEWISE x4 + FULL | boot log |
 | Tool calling | OpenAI format roundtrip verified | serving |
 | Boot to ready | ~13 min | boot log |
-| Checkpoint | 145.4 GiB, 120 shards, 150,226 tensors | pack receipt |
+| Checkpoint | 145.4 GiB, 120 shards, 150,226 tensors incl. 347-tensor vision tower | pack receipt |
 
 Reference on the same hardware: the 4bpw DFlash2 cell peaks at 78-91 tok/s
 at 192K-230K context. This beats that decode rate at 5x the context.
+
+### Vision
+
+The vision tower (347 `model.visual.*` tensors, 2.05 GB) has been in the
+checkpoint all along (shard 120); the language-only behavior was just the
+`--language-model-only` flag. To serve vision, use
+[serve/serve-k35-vision.sh](serve/serve-k35-vision.sh): the same launcher
+with that flag swapped for `--limit-mm-per-prompt '{"image":4,"video":1}'`
+and one bind-mount, `patches/rotary_common.py`, which aliases the rotary
+`forward_cuda` to the eager torch implementation (this image's
+vllm_flash_attn build ships without the `layers` subpackage the ViT rope
+path imports). Qualified at 200K context: a synthetic test image came
+back with exact shapes, colors, and verbatim OCR ("GLM VISION TEST 42").
+The 1M language profile and the vision profile are separate serve
+configurations; the ladder above 200K is being measured.
 
 Evidence: [docs/evidence/](docs/evidence/) - includes a real multi-turn
 agentic session with tool calls and long reasoning.
