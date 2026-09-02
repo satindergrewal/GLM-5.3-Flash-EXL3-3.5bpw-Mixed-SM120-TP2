@@ -90,12 +90,16 @@ vllm_flash_attn build ships without the `layers` subpackage the ViT rope
 path imports).
 
 Qualified rungs (same synthetic test image, describe + verbatim-OCR
-tests at each): **200K PASS, 400K PASS** (pool 2,412,307 tokens). The
-full 499968 profile boots and allocates its pool (2,288,315 tokens) but
-the engine wedges on the first image request at that rung (suspected
-mm-encoder memory at 0.985 gpu-utilization) - serve vision at 400K or
-lower. The 1M language profile and the vision profile are separate
-configurations; 1M + image is untested.
+tests at each; harness bench/vision_test.py): **200K PASS, 400K PASS,
+499968 PASS at gpu-memory-utilization 0.96** (the 499968 wedge at 0.985
+was ViT encoder headroom; the gmu drop is the whole fix).
+
+**1M + vision in one serve**: [serve/serve-k35-vision-1m.sh](serve/serve-k35-vision-1m.sh)
+(MAX_MODEL_LEN=1000000, image limit 1, gmu 0.975, seqs=8) boots with a
+1,042,253-token pool and passes both vision tests at 1M. That is the
+product profile: thinking-on + 1M + vision + concurrency. Measured on
+it: single 174-178 tok/s thinking-off warm, 143 tok/s thinking-on,
+aggregate 141.2 @4 / 175.2 @6 streams (per-stream ~30).
 
 Evidence: [docs/evidence/](docs/evidence/) - includes a real multi-turn
 agentic session with tool calls and long reasoning.
@@ -178,7 +182,7 @@ serve ever looks slow: grep the boot log for `enforce_eager` and count
 | Real-session evidence | complete |
 | KLD five-run gate | complete, PASSED 0.029654 < 0.06 |
 | Eval suite (GSM8K/HumanEval/MATH-500) + deep-context curve | complete, numbers above |
-| Vision profile | not exercised (language profile only) |
+| Vision profile | complete: 200K/400K/499968 qualified; 1M+vision product profile live |
 
 ## Repo layout
 
