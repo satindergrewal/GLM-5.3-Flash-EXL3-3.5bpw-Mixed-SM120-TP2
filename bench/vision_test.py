@@ -45,6 +45,34 @@ def alive():
 
 
 def main():
+    mode = sys.argv[2] if len(sys.argv) > 2 else "single"
+    if mode == "multi":
+        img = base64.b64encode(open(IMG, "rb").read()).decode()
+        body = {"model": MODEL,
+                "messages": [{"role": "user", "content": [
+                    {"type": "image_url",
+                     "image_url": {"url": f"data:image/png;base64,{img}"}},
+                    {"type": "image_url",
+                     "image_url": {"url": f"data:image/png;base64,{img}"}},
+                    {"type": "text",
+                     "text": "Two images are attached. Quote the text "
+                             "visible in each, one line per image."},
+                ]}],
+                "max_tokens": 512, "temperature": 0}
+        req = urllib.request.Request(
+            BASE + "/v1/chat/completions", data=json.dumps(body).encode(),
+            headers={"Content-Type": "application/json"})
+        t0 = time.time()
+        with urllib.request.urlopen(req, timeout=600) as r:
+            d = json.load(r)
+        wall = time.time() - t0
+        ocr = d["choices"][0]["message"].get("content") or ""
+        ok = ocr.count("GLM VISION TEST 42") == 2
+        print(f"multi wall={wall:.1f}s both-ocr={'PASS' if ok else 'FAIL'}")
+        print(ocr[:200].replace("\n", " | "))
+        print("engine alive after:", alive())
+        return 0 if (ok and alive()) else 1
+
     w1, desc = ask("Describe this image exactly: shapes and colors.")
     ok_shapes = ("red" in desc.lower() and "triangle" in desc.lower()
                  and "blue" in desc.lower())
