@@ -94,12 +94,17 @@ tests at each; harness bench/vision_test.py): **200K PASS, 400K PASS,
 499968 PASS at gpu-memory-utilization 0.96** (the 499968 wedge at 0.985
 was ViT encoder headroom; the gmu drop is the whole fix).
 
-**1M + vision in one serve**: [serve/serve-k35-vision-1m.sh](serve/serve-k35-vision-1m.sh)
-(MAX_MODEL_LEN=1000000, image limit 1, gmu 0.975, seqs=8) boots with a
-1,042,253-token pool and passes both vision tests at 1M. That is the
-product profile: thinking-on + 1M + vision + concurrency. Measured on
-it: single 174-178 tok/s thinking-off warm, 143 tok/s thinking-on,
-aggregate 141.2 @4 / 175.2 @6 streams (per-stream ~30).
+**1M + vision in one serve**: [serve/serve-k35-vision-1m-multi.sh](serve/serve-k35-vision-1m-multi.sh)
+(MAX_MODEL_LEN=1000000, up to 4 images per request, gmu 0.975, seqs=8)
+boots with a 1,042,253-token pool and passes describe + verbatim-OCR at
+1M, including a two-image request. That is the product profile:
+thinking-on + 1M + multi-image + concurrency. Measured on it: single
+174-178 tok/s thinking-off warm, 143 tok/s thinking-on, aggregate
+141.2 @4 / 175.2 @6 streams (per-stream ~30). Video does not fit the
+pool at 1M (per-1M-request KV need 3.98 GiB beats the headroom math;
+frame-cap kwargs are ignored by the GLM processor and DCP=2 wedges the
+A2A handshake on this pair) - video is a <=500K profile capability
+(serve/serve-k35-vision.sh, image:4 + video:1).
 
 Evidence: [docs/evidence/](docs/evidence/) - includes a real multi-turn
 agentic session with tool calls and long reasoning.
