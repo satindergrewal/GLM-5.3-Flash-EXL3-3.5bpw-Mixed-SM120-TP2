@@ -1,0 +1,105 @@
+=== Running Estonia Test 1/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        30/30 │ PASS 29 / FAIL 0 / TRUNC 1 │ ★★★★★★★★★★ │          4,676 │          7,189 │            87.2 │         311.6 │   yes    │
+│ score                         │                                        PASS 29 / FAIL 0 / TRUNC 1 │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 2/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        30/30 │ PASS 30 / FAIL 0 │ ★★★★★★★★★★ │          4,874 │         11,490 │            86.4 │         316.1 │   yes    │
+│ score                      │ PASS 30 / FAIL 0 │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 3/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        30/30 │ PASS 29 / FAIL 0 / DECOY 1 │ ★★★★★★★★★★ │          4,654 │         13,670 │            84.5 │         329.6 │   yes    │
+│ score                      │ PASS 29 / FAIL 0 / DECOY 1 │
+│ 30 │ 30 │ 13,466 │ DECOY │ Latvia (decoy answer: expected Estonia, got Latvia) | Latvia │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 4/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        30/30 │ PASS 27 / FAIL 0 / DECOY 2 / TRUNC 1 │ ★★★★★★★★★✕ │          5,648 │         11,031 │            87.0 │         385.1 │   yes    │
+│ score                         │                             PASS 27 / FAIL 0 / DECOY 2 / TRUNC 1 │
+│ 13 │ 30 │  4,852 │ DECOY │ Latvia (decoy answer: expected Estonia, got Latvia) | Latvia │
+│ 21 │ 30 │  6,518 │ DECOY │ Latvia (decoy answer: expected Estonia, got Latvia) | Latvia │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 5/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        26/30 │ PASS 26 / FAIL 0 │ ★★★★★★★★★★ │          6,204 │         15,054 │            86.0 │         334.8 │   yes    │
+│ score                      │ PASS 26 / FAIL 0 │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 6/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        29/30 │ PASS 28 / FAIL 0 / TRUNC 1 │ ★★★★★★★★★★ │          6,778 │          9,383 │            86.6 │         376.7 │   yes    │
+│ score                         │                                        PASS 28 / FAIL 0 / TRUNC 1 │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 7/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        25/30 │ PASS 24 / FAIL 0 / TRUNC 1 │ ★★★★★★★★★★ │          6,201 │         14,169 │            88.5 │         362.1 │   yes    │
+│ score                         │                                        PASS 24 / FAIL 0 / TRUNC 1 │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 8/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        30/30 │ PASS 28 / FAIL 0 / DECOY 1 / TRUNC 1 │ ★★★★★★★★★★ │          4,803 │         15,322 │            88.2 │         353.5 │   yes    │
+│ score                         │                             PASS 28 / FAIL 0 / DECOY 1 / TRUNC 1 │
+│ 13 │ 30 │ 16,861 │ DECOY │ Latvia (decoy answer: expected Estonia, got Latvia) | Latvia │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 9/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        27/30 │ PASS 26 / FAIL 0 / TRUNC 1 │ ★★★★★★★★★★ │          5,490 │         16,302 │            89.7 │         340.8 │   yes    │
+│ score                         │                                        PASS 26 / FAIL 0 / TRUNC 1 │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.
+=== Running Estonia Test 10/10 ===
+│ Scoring: PASS / DECOY / NOT_STATED / FAIL asserted country (expected Estonia)                                                                                                                                            │
+│ The same 700k-character packet is resampled N times. The model must follow a six-hop cross-reference chain past planted decoys and name the vendor's country. Wrong answers split into DECOY (took the planted country), │
+│ NOT_STATED (gave up) and FAIL; incomplete streams are reported separately. Built-in profile run at fixed concurrency C=30.                                                                                               │
+│       30 │        24/30 │ PASS 21 / FAIL 0 / DECOY 1 / TRUNC 2 │ ★★★★★★★★★⊘ │          5,922 │         24,832 │            93.5 │         386.4 │   yes    │
+│ score                         │                             PASS 21 / FAIL 0 / DECOY 1 / TRUNC 2 │
+│ 20 │ 30 │  9,468 │ DECOY │ Latvia (decoy answer: expected Estonia, got Latvia) | Latvia        │
+Interpretation: PASS means the country the visible answer asserts is the expected one (an explicit 'Final answer:' line wins; otherwise the last line that names a country). Countries mentioned only as a negated contrast 
+('not Latvia') or in a parenthetical aside do not count. DECOY = the model committed to the planted wrong country; NOT_STATED = the model said the packet does not contain the answer (gave up); AMBIG = one conclusion line
+asserts two countries (scored wrong, review manually); FAIL = another country or no country at all. TRUNC/STALL/TIMEOUT (⊘) never produced a visible answer and are runtime artifacts, reported separately from wrong 
+answers. Private reasoning is never scored. Quality bar: ★=PASS, ✕=wrong, ⊘=incomplete.

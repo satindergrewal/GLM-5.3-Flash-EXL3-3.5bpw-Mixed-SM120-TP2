@@ -1,0 +1,84 @@
+=== Running Hotel-Lights Test 1/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         6/30 │ EXACT 5 / FAIL 1 │ ★★★★★★★★✕✕ │         71,648 │        405,276 │           141.6 │        1343.7 │   yes    │
+│ score                      │ EXACT 5 / FAIL 1 │
+Failed Final Answers                                                                              
+│  5 │ 30 │  8,953 │ FAIL  │ 49 (expected 48, got 49) | 49                                       │
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 2/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         4/30 │ EXACT 4 / FAIL 0 │ ★★★★★★★★★★ │         61,470 │         66,462 │            90.3 │         685.1 │   yes    │
+│ score                      │ EXACT 4 / FAIL 0 │
+Failed Final Answers                                                                              
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 3/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         6/30 │ EXACT 3 / FAIL 1 / TRUNC 1 / STALL 1 │ ★★★★★✕✕⊘⊘⊘ │        101,581 │        465,413 │            94.8 │        2428.5 │   yes    │
+│ score                         │                           EXACT 3 / FAIL 1 / TRUNC 1 / STALL 1 │
+Failed Final Answers                                                                               
+│  3 │ 30 │  47,072 │ FAIL  │ 47 (expected 48, got 47) | 47                                       │
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 4/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         6/30 │ EXACT 5 / FAIL 1 │ ★★★★★★★★✕✕ │         91,168 │        417,773 │           134.5 │        1547.5 │   yes    │
+│ score                      │ EXACT 5 / FAIL 1 │
+Failed Final Answers                                                                                                                                                                                                        
+│  7 │ 30 │ 131,977 │ FAIL  │ (unparseable: multiple numbers without answer anchor) | Total:** 32 + 16 = **48** (e.g., room 6: guest 2 makes it blue, guests 3, 6 change nothing; room 77: guest 11 makes it blue but      │
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 5/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         7/30 │ EXACT 7 / FAIL 0 │ ★★★★★★★★★★ │         93,797 │        138,112 │            97.7 │        1047.1 │   yes    │
+│ score                      │ EXACT 7 / FAIL 0 │
+Failed Final Answers                                                                              
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 6/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         6/30 │ EXACT 5 / FAIL 0 / TRUNC 1 │ ★★★★★★★★⊘⊘ │        108,348 │        435,984 │           133.7 │        1657.9 │   yes    │
+│ score                         │                                      EXACT 5 / FAIL 0 / TRUNC 1 │
+Failed Final Answers                                                                               
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 7/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         4/30 │ EXACT 3 / FAIL 0 / TRUNC 1 │ ★★★★★★★★⊘⊘ │        142,548 │        543,631 │           129.3 │        2096.9 │   yes    │
+│ score                         │                                      EXACT 3 / FAIL 0 / TRUNC 1 │
+Failed Final Answers                                                                               
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 8/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         4/30 │ EXACT 1 / FAIL 0 / TRUNC 1 / STALL 2 │ ★★⊘⊘⊘⊘⊘⊘⊘⊘ │        158,624 │        539,799 │            73.1 │        4120.0 │   yes    │
+│ score                         │                            EXACT 1 / FAIL 0 / TRUNC 1 / STALL 2 │
+Failed Final Answers                                                                               
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 9/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         5/30 │ EXACT 3 / FAIL 1 / TRUNC 1 │ ★★★★★★✕✕⊘⊘ │        137,438 │        477,577 │            93.4 │        2546.1 │   yes    │
+│ score                         │                                     EXACT 3 / FAIL 1 / TRUNC 1 │
+Failed Final Answers                                                                                                                                                                                     
+│  6 │ 30 │ 144,095 │ FAIL  │ inf (expected 48, got inf) | 48484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848484848 │
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+=== Running Hotel-Lights Test 10/10 ===
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│       30 │         4/30 │ EXACT 3 / FAIL 0 / TRUNC 1 │ ★★★★★★★★⊘⊘ │        115,286 │        533,012 │           102.7 │        2602.6 │   yes    │
+│ score                         │                                      EXACT 3 / FAIL 0 / TRUNC 1 │
+Failed Final Answers                                                                               
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.

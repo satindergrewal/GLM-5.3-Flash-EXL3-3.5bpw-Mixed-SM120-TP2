@@ -1,0 +1,89 @@
+╭───────────────────────────────────────────────────────── NVIDIA P2P Override ─────────────────────────────────────────────────────────╮
+│ Effective: no                                                                                                                         │
+│ Configured file: no (/etc/modprobe.d/nvidia-p2p-override.conf)                                                                        │
+│ Runtime: ForceP2P=; RMForceP2PType=; RMPcieP2PType=; GrdmaPciTopoCheckOverride=0; EnableResizableBar=0; DmaRemapPeerMmio=1            │
+│ Suggested modprobe line:                                                                                                              │
+│ options nvidia NVreg_RegistryDwords="ForceP2P=0x11;RMForceP2PType=1;RMPcieP2PType=2;GrdmaPciTopoCheckOverride=1;EnableResizableBar=1" │
+│ Apply requires NVIDIA module reload or reboot after stopping GPU workloads.                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────────────────────────────────────────────────────── Configuration ──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Hotel Lights Reasoning Test                                                                                                                                                                                              │
+│ Model: GLM-5.3-Flash-EXL3-3.5bpw-fp8 @ http://localhost                                                                                                                                                                  │
+│ Prompt: profile:hotel-lights                                                                                                                                                                                             │
+│ Concurrency: 30                                                                                                                                                                                                          │
+│ Measured runs: 30 | Max tokens: omitted (no client cap)                                                                                                                                                                  │
+│ Scoring: EXACT / FAIL asserted final number (strict; reasoning never scored)                                                                                                                                             │
+│ Sampling: server/model defaults (unpinned) | Watchdog: stall 600s, wall-clock off                                                                                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────── Completion Stats ────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Hotel Lights Reasoning Test                                                                                                                                                                                              │
+│ A compact reasoning profile with a known numeric answer. It checks whether the model handles repeated toggles plus the cat reset rule and returns 48. Built-in profile run at fixed concurrency C=30.                    │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Profile                                                
+╭────────────────┬────────────────────────────────────╮
+│ field          │ value                              │
+├────────────────┼────────────────────────────────────┤
+│ profile        │ hotel-lights                       │
+│ prompt         │ profile:hotel-lights               │
+│ prompt chars   │ 385                                │
+│ requested runs │ 30                                 │
+│ concurrency    │ 30                                 │
+│ max tokens     │ omitted (server/model default)     │
+│ scoring        │ numeric_exact                      │
+│ expected       │ 48                                 │
+│ prompt sha256  │ cbe4d382ab459448                   │
+│ prefill scout  │ 102 prompt tok / 0.16s = 626 tok/s │
+╰────────────────┴────────────────────────────────────╯
+╭─────────────────────── Whole-run GPU Power ────────────────────────╮
+│ avg 726 W | max 763 W | limit 900 W | over 91m 50s | 2,543 samples │
+╰────────────────────────────────────────────────────────────────────╯
+Concurrency Results                                                                                                                                           
+╭──────────┬──────────────┬──────────────────────────────────────┬────────────┬────────────────┬────────────────┬─────────────────┬───────────────┬──────────╮
+│ parallel │ done/started │                                score │   stars    │ output tok p50 │ output tok p90 │ aggregate tok/s │ avg request s │ selected │
+├──────────┼──────────────┼──────────────────────────────────────┼────────────┼────────────────┼────────────────┼─────────────────┼───────────────┼──────────┤
+│       30 │         6/30 │ EXACT 3 / FAIL 1 / TRUNC 1 / STALL 1 │ ★★★★★✕✕⊘⊘⊘ │        101,581 │        465,413 │            94.8 │        2428.5 │   yes    │
+╰──────────┴──────────────┴──────────────────────────────────────┴────────────┴────────────────┴────────────────┴─────────────────┴───────────────┴──────────╯
+Selected C=30                                                                                     
+╭───────────────────────────────┬────────────────────────────────────────────────────────────────╮
+│ metric                        │                                                          value │
+├───────────────────────────────┼────────────────────────────────────────────────────────────────┤
+│ completed                     │                                                           6/30 │
+│ score                         │                           EXACT 3 / FAIL 1 / TRUNC 1 / STALL 1 │
+│ stars                         │                                                  ★★★★★✕✕⊘⊘⊘ 👍 │
+│ pass rate                     │                                                    50.0% (3/6) │
+│ pass rate, finished runs only │ 75.0% (3/4); 2 incomplete (truncated/stalled/timeout) excluded │
+│ hit max_tokens                │           1  (1 produced no answer, 0 answered before the cap) │
+│ watchdog stops                │                                1 stalled, 0 wall-clock timeout │
+│ completion tokens avg         │                                                        204,331 │
+│ completion tokens p50         │                                                        101,581 │
+│ completion tokens p90         │                                                        465,413 │
+│ completion tokens p99         │                                                        676,450 │
+│ elapsed avg                   │                                                        2428.5s │
+│ TTFT avg                      │                                                        172.20s │
+│ aggregate gen tok/s           │                                                           94.8 │
+│ mean per-request gen tok/s    │                                                           90.6 │
+╰───────────────────────────────┴────────────────────────────────────────────────────────────────╯
+Failed Final Answers                                                                               
+╭────┬────┬─────────┬───────┬─────────────────────────────────────────────────────────────────────╮
+│  # │  C │  tokens │ score │ final answer                                                        │
+├────┼────┼─────────┼───────┼─────────────────────────────────────────────────────────────────────┤
+│  1 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│  3 │ 30 │  47,072 │ FAIL  │ 47 (expected 48, got 47) | 47                                       │
+│  6 │ 30 │ 699,898 │ TRUNC │ (no answer: hit max_tokens limit) |                                 │
+│  7 │ 30 │ 147,718 │ STALL │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│  8 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│  9 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│ 10 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│ 11 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│ 12 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│ 13 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│ 14 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+│ 15 │ 30 │       0 │  ERR  │ (no answer: stream stalled (no tokens within the stall timeout)) |  │
+╰────┴────┴─────────┴───────┴─────────────────────────────────────────────────────────────────────╯
+Interpretation: EXACT means the number the visible answer asserts matches the expected value. The scorer reads an explicit 'Final answer:' line, a line that is just the number, or a number anchored at the end of the last
+line ('= 48', 'answer is 48'); 'Not 48', hedged statements and lines with several unanchored numbers are unparseable (FAIL). Private reasoning is never scored. TRUNC/STALL/TIMEOUT (glyph ⊘) mark runs that never produced 
+a visible answer because of max_tokens, a token stall or the wall-clock limit; they count as not-correct but are runtime artifacts, so the report also shows the pass rate over finished runs. The 10-slot quality bar is a 
+rounded distribution: ★=EXACT, ✕=FAIL, ⊘=incomplete.
+
+Results saved to benchmark_results.json
